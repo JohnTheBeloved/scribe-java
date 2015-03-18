@@ -12,6 +12,7 @@ import org.scribe.utils.*;
 public class TokenExtractor20Impl implements AccessTokenExtractor
 {
   private static final String TOKEN_REGEX = "access_token=([^&]+)";
+  private static final String PASSPORT_TOKEN_REGEX = "access_token([^,]*)";
   private static final String EMPTY_SECRET = "";
 
   /**
@@ -21,11 +22,12 @@ public class TokenExtractor20Impl implements AccessTokenExtractor
   {
     Preconditions.checkEmptyString(response, "Response body is incorrect. Can't extract a token from an empty string");
 
-    Matcher matcher = Pattern.compile(TOKEN_REGEX).matcher(response);
+    Matcher matcher = Pattern.compile(PASSPORT_TOKEN_REGEX).matcher(response);
     if (matcher.find())
     {
-      String token = OAuthEncoder.decode(matcher.group(1));
-      return new Token(token, EMPTY_SECRET, response);
+      String token = matcher.group(0).replaceAll("access_token\":", "");
+      String userToken = token.split("\\.")[1];
+      return new Token(userToken, EMPTY_SECRET, response);
     } 
     else
     {

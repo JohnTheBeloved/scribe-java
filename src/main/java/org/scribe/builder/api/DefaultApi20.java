@@ -40,7 +40,7 @@ public abstract class DefaultApi20 implements Api
    */
   public Verb getAccessTokenVerb()
   {
-    return Verb.GET;
+    return Verb.POST;
   }
 	
   /**
@@ -65,6 +65,18 @@ public abstract class DefaultApi20 implements Api
   public OAuthService createService(OAuthConfig config)
   {
     return new OAuth20ServiceImpl(this, config);
+  }
+
+
+  //Hack for Passport API
+  /**
+   * Returns the header extractor.
+   * 
+   * @return header extractor
+   */
+  public HeaderExtractor getHeaderExtractor()
+  {
+    return new HeaderExtractorImpl();
   }
 
 }

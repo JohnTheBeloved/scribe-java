@@ -32,9 +32,12 @@ public class OAuth20ServiceImpl implements OAuthService
     request.addQuerystringParameter(OAuthConstants.CLIENT_SECRET, config.getApiSecret());
     request.addQuerystringParameter(OAuthConstants.CODE, verifier.getValue());
     request.addQuerystringParameter(OAuthConstants.REDIRECT_URI, config.getCallback());
+    request.addHeader(OAuthConstants.HEADER, "Basic c21hcnRpbnN1cmU6c2VjcmV0");
     if(config.hasScope()) request.addQuerystringParameter(OAuthConstants.SCOPE, config.getScope());
     Response response = request.send();
+
     return api.getAccessTokenExtractor().extract(response.getBody());
+
   }
 
   /**
@@ -59,6 +62,8 @@ public class OAuth20ServiceImpl implements OAuthService
   public void signRequest(Token accessToken, OAuthRequest request)
   {
     request.addQuerystringParameter(OAuthConstants.ACCESS_TOKEN, accessToken.getToken());
+
+    request.addHeader(OAuthConstants.HEADER, "Basic c21hcnRpbnN1cmU6c2VjcmV0");
   }
 
   /**

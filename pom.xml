@@ -4,20 +4,20 @@
   <groupId>org.scribe</groupId>
   <artifactId>scribe</artifactId>
   <packaging>jar</packaging>
-  <version>1.3.7</version>
+  <version>1.3.7.10</version>
   <name>Scribe OAuth Library</name>
-  <description>The best OAuth library out there</description>
+  <description>The best OAuth library out there, modifiied to suite passport oauth provider API</description>
   <url>http://github.com/fernandezpablo85/scribe-java</url>
 
-  <parent>
+  <!--parent>
     <groupId>org.sonatype.oss</groupId>
     <artifactId>oss-parent</artifactId>
     <version>5</version>
-  </parent>
+  </parent-->
 
-  <properties>
+  <!--properties>
     <github.global.server>github</github.global.server>
-  </properties>
+  </properties-->
 
   <developers>
     <developer>
@@ -35,17 +35,17 @@
     </license>
   </licenses>
 
-  <scm>
+  <!--scm>
     <connection>scm:http://github.com/fernandezpablo85/scribe-java.git</connection>
     <developerConnection>scm:http://github.com/fernandezpablo85/scribe-java.git</developerConnection>
     <url>http://github.com/fernandezpablo85/scribe-java.git</url>
-  </scm>
+  </scm-->
 
   <distributionManagement>
     <repository>
-      <id>internal.repo</id>
-      <name>Temporary Staging Repository</name>
-      <url>file://${project.build.directory}/mvn-repo</url>
+      <id>archiva.internal</id>
+      <name>Internal Release Repository</name>
+      <url>http://172.25.20.29/repository/internal</url>
     </repository>
   </distributionManagement>
 
@@ -98,7 +98,7 @@
           </execution>
         </executions>
       </plugin>
-      <plugin>
+      <!--plugin>
         <groupId>com.github.github</groupId>
         <artifactId>site-maven-plugin</artifactId>
         <version>0.9</version>
@@ -136,7 +136,7 @@
             </configuration>
           </execution>
         </executions>
-        </plugin>
+        </plugin-->
         <plugin>
             <groupId>org.jacoco</groupId>
             <artifactId>jacoco-maven-plugin</artifactId>

@@ -6,6 +6,8 @@ import java.util.*;
 import java.util.regex.*;
 import org.scribe.exceptions.*;
 
+import org.apache.commons.codec.binary.Base64;
+
 /**
  * @author Pablo Fernandez
  */
@@ -13,6 +15,7 @@ public class OAuthEncoder
 {
   private static String CHARSET = "UTF-8";
   private static final Map<String, String> ENCODING_RULES;
+
 
   static
   {
@@ -59,6 +62,24 @@ public class OAuthEncoder
     catch(UnsupportedEncodingException uee)
     {
       throw new OAuthException("Charset not found while decoding string: " + CHARSET, uee);
+    }
+  }
+
+  public static String decodeBase64(String encoded, String format){
+
+    Preconditions.checkNotNull(encoded, "Cannot decode null object");
+
+    Base64 decoder = new Base64(true);
+
+   
+    try
+    {
+      String decoded = new String(decoder.decodeBase64(encoded), format);
+      return decoded;
+    }
+    catch(UnsupportedEncodingException uee)
+    {
+      throw new OAuthException("canot decode encoded Chararacer set: " , uee);
     }
   }
 }
