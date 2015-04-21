@@ -1,3 +1,6 @@
+# Please, note that this plugin was modified to enable authentication using Interswitch Passport also as an authentication Provider and also includes other Authentication prividers (see path scribe-java/src/main/java/org/scribe/builder/api for all Apis supported) .
+##Although no more supported by the author, the plugin's is being hosted on GIT https://github.com/fernandezpablo85/scribe-java
+# Welcome to the home of Scribe, the simple OAuth Java lib! 
 # Welcome to the home of Scribe, the simple OAuth Java lib! 
 
 ![travis ci](https://secure.travis-ci.org/fernandezpablo85/scribe-java.png?branch=master)
